@@ -1,7 +1,7 @@
+from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.base_user import BaseUserManager
 
 
 class CustomUserManager(BaseUserManager):
@@ -52,6 +52,7 @@ class CustomUser(AbstractUser):
 
 class UserTodo(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    todo = models.TextField(_("todo"), null=True)
-    created_at = models.DateTimeField(_("created_at"), auto_now_add=True)
-    updated_at = models.DateTimeField(_("updated_at"), auto_now=True)
+    todo = models.TextField(_("Todo"), null=True)
+    deadline = models.DateTimeField(_("Deadline"), null=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Updated at"), auto_now=True)
