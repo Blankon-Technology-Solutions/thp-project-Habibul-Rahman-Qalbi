@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.viewsets import ModelViewSet
 from .serializers import UserSerializer, TokenObtainPairSerializer, TodoSerializer
 from .models import CustomUser, UserTodo
-from backend.permissions import IsUser, IsAdmin
+from backend.permissions import IsUser, IsAdmin, IsOwner
 
 
 class RegisterView(APIView):
@@ -27,6 +27,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
 class TodoViewSet(ModelViewSet):
     serializer_class = TodoSerializer
     queryset = UserTodo.objects.all()
+    permission_classes = [IsOwner]
 
 
 class UserViewSet(ModelViewSet):

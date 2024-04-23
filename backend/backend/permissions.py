@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission, IsAuthenticated
-from api.models import CustomUser
+from api.models import CustomUser, UserTodo
 
 
 class IsUser(IsAuthenticated):
@@ -7,7 +7,16 @@ class IsUser(IsAuthenticated):
         if isinstance(request.user, CustomUser):
             user = request.user
             if user.is_authenticated:
-                return bool(obj.email == user.email)
+                return bool(obj.pk == user.pk)
+        return False
+
+
+class IsOwner(IsAuthenticated):
+    def has_object_permission(self, request, view, obj: UserTodo):
+        if isinstance(request.user, CustomUser):
+            user = request.user
+            if user.is_authenticated:
+                return bool(obj.user.pk == user.pk)
         return False
 
 
