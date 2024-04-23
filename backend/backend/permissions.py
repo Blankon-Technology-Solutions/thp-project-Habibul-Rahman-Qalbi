@@ -1,5 +1,5 @@
-from rest_framework.permissions import BasePermission, IsAuthenticated
 from api.models import CustomUser, UserTodo
+from rest_framework.permissions import BasePermission, IsAuthenticated
 
 
 class IsUser(IsAuthenticated):

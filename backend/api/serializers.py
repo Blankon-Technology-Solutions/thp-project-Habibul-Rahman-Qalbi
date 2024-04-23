@@ -1,4 +1,7 @@
-from .models import UserTodo, CustomUser
+from api.models import CustomUser, UserTodo
+from django.contrib.auth import get_user_model
+from django.core.validators import validate_email
+from django.utils.translation import gettext_lazy as _
 from rest_framework.serializers import (
     CharField,
     EmailField,
@@ -6,9 +9,6 @@ from rest_framework.serializers import (
     ValidationError,
 )
 from rest_framework.validators import UniqueValidator
-from django.contrib.auth import get_user_model
-from django.utils.translation import gettext_lazy as _
-from django.core.validators import validate_email
 from rest_framework_simplejwt.serializers import (
     TokenObtainPairSerializer as JwtTokenObtainPairSerializer,
 )
