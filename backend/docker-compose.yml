@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  backend:
+    restart: unless-stopped
+    image: habi6799/backend:alpha
+    working_dir: /code
+    volumes:
+      - .:/code
+    environment:
+      DJANGO_SETTINGS_MODULE: backend.settings
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+
+    command:
+      - /bin/bash
+      - -c
+      - |
+        python manage.py collectstatic --no-input --settings=backend.settings.minio
+        python manage.py migrate --settings=backend.settings.minio
+        python manage.py runserver 0.0.0.0:8000
