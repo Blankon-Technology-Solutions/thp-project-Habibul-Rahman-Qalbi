@@ -48,14 +48,16 @@ class RegisterSerializer(ModelSerializer):
             "username",
             "first_name",
             "last_name",
-            "phone_number",
             "password",
             "password2",
             "email",
         )
         extra_kwargs = {
             "username": {"help_text": _("Insert username for this account")},
-            "first_name": {"required": True, "help_text": _("Insert user first name")},
+            "first_name": {
+                "allow_blank": True,
+                "help_text": _("Insert user first name"),
+            },
             "last_name": {"allow_blank": True, "help_text": _("Insert user last name")},
         }
 
