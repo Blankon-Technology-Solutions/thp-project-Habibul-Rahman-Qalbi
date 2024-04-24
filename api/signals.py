@@ -7,7 +7,7 @@ from django.dispatch import receiver
 from django_redis import get_redis_connection
 
 
-@receiver(post_save, sender=UserTodo, dispatch_uid="update_todo")
+@receiver(post_save, sender=UserTodo)
 def publish_event(instance: UserTodo, **kwargs):
     event = {
         "message": "New Todo List Updated",
