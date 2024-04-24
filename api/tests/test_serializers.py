@@ -1,5 +1,6 @@
-from rest_framework.exceptions import ValidationError
 from django.test import TestCase
+from rest_framework.exceptions import ValidationError
+
 from api.models import CustomUser, UserTodo
 from api.serializers import RegisterSerializer, TodoSerializer, UserSerializer
 
@@ -91,10 +92,7 @@ class TodoSerializerCRUDTestCase(TestCase):
         """
         Test creating a new todo using TodoSerializer.
         """
-        user = CustomUser.objects.create_user(
-            email="test@example.com", password="password123"
-        )
-        data = {"user": user.id, "todo": "Test Todo"}
+        data = {"todo": "Test Todo"}
         serializer = TodoSerializer(data=data)
         self.assertTrue(serializer.is_valid())
         todo = serializer.save()

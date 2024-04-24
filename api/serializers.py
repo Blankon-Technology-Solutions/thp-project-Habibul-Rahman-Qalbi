@@ -85,20 +85,16 @@ class TodoSerializer(ModelSerializer):
 
     # Make sure to only create user's own todo
     def create(self, validated_data):
-        user = None
         request = self.context.get("request")
         if request and hasattr(request, "user"):
-            user = request.user
-
-        validated_data["user"] = user
+            if isinstance(request.user, CustomUser):
+                validated_data["user"] = request.user
         return super().create(validated_data)
 
     # Make sure to only update user's own todo
     def update(self, instance, validated_data):
-        user = None
         request = self.context.get("request")
         if request and hasattr(request, "user"):
-            user = request.user
-
-        validated_data["user"] = user
+            if isinstance(request.user, CustomUser):
+                validated_data["user"] = request.user
         return super().update(instance, validated_data)
