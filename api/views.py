@@ -34,4 +34,4 @@ class TodoViewSet(ModelViewSet):
 class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.all()
-    permission_classes = [IsAdmin, IsUser]
+    permission_classes = [IsAdmin | IsUser]
