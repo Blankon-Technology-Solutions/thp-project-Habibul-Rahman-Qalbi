@@ -1,4 +1,6 @@
+aioredis==2.0.1
 asgiref==3.8.1
+async-timeout==4.0.3
 attrs==23.2.0
 certifi==2024.2.2
 cffi==1.16.0
@@ -9,6 +11,8 @@ dj-rest-auth==6.0.0
 Django==5.0.4
 django-allauth==0.62.1
 django-cors-headers==4.3.1
+django-redis==5.4.0
+django-sesame==3.2.2
 djangorestframework==3.15.1
 djangorestframework-simplejwt==5.3.1
 drf-spectacular==0.27.2
@@ -20,11 +24,14 @@ oauthlib==3.2.2
 pycparser==2.22
 PyJWT==2.8.0
 PyYAML==6.0.1
+redis==5.0.4
 referencing==0.35.0
 requests==2.31.0
 requests-oauthlib==2.0.0
 rpds-py==0.18.0
 sqlparse==0.5.0
+typing_extensions==4.11.0
 tzdata==2024.1
 uritemplate==4.1.1
 urllib3==2.2.1
+websockets==12.0

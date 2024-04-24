@@ -11,6 +11,7 @@ from api.views import (
     RegisterView,
     TodoViewSet,
     UserViewSet,
+    GetWSTokenView,
 )
 
 app_name = "api"
@@ -20,6 +21,7 @@ router = DefaultRouter()
 router.register(r"user", UserViewSet, basename="user")
 router.register(r"todo", TodoViewSet, basename="todo")
 router.register(r"register", RegisterView, basename="register")
+router.register(r"ws_token", GetWSTokenView, basename="ws_token")
 
 urlpatterns = [
     path("login/google/", GoogleLogin.as_view(), name="google_login"),

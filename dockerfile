@@ -23,3 +23,4 @@ RUN pip install -r requirements.txt
 COPY ./api ./api
 COPY ./backend ./backend
 COPY ./manage.py ./manage.py
+COPY ./ws_server.py ./ws_server.py

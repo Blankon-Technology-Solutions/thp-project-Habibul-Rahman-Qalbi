@@ -2,6 +2,9 @@ dj-rest-auth
 Django
 django-allauth[socialaccount]
 django-cors-headers
+django-redis
+django-sesame
 djangorestframework
 djangorestframework-simplejwt
 drf-spectacular
+websockets
