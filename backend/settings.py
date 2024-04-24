@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
-
+CORS_ALLOW_ALL_ORIGIN = True
 
 # Application definition
 
@@ -45,6 +45,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "api",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.linkedin_oauth2",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -94,11 +102,29 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = "api.CustomUser"
-AUTHENTICATION_BACKENDS = ["backend.authentication.EmailBackend"]
+AUTHENTICATION_BACKENDS = [
+    "backend.authentication.EmailBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATIO = "none"
+LOGIN_REDIRECT_URL = "/api/"
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "FETCH_USERINFO": True,
+    },
+}
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     )
 }
@@ -134,6 +160,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+
+REST_AUTH = {
+    "USE_JWT": True,
+    "JWT_AUTH_COOKIE": "access",
+    "JWT_AUTH_REFRESH_COOKIE": "refresh",
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"

@@ -21,7 +21,7 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class UserSerializer(ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("email", "password")
+        exclude = ["password"]
 
 
 class RegisterSerializer(ModelSerializer):

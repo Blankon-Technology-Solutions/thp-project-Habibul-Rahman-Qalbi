@@ -1,6 +1,5 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -40,22 +39,10 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
 
-    username_validator = UnicodeUsernameValidator()
-    username = models.CharField(
-        _("username"),
-        max_length=150,
-        unique=True,
-        null=True,
-        help_text=_(
-            "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-        ),
-        validators=[username_validator],
-        error_messages={
-            "unique": _("A user with that username already exists."),
-        },
-    )
+    username = None
     email = models.EmailField(_("email address"), unique=True)
     REQUIRED_FIELDS = []
+    USERNAME_FIELD = "email"
 
     objects = CustomUserManager()
 

@@ -8,6 +8,25 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from backend.permissions import IsAdmin, IsOwner, IsUser
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.linkedin_oauth2.views import LinkedInOAuth2Adapter
+from dj_rest_auth.registration.views import SocialLoginView, SocialConnectView
+
+
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+
+
+class GoogleConnect(SocialConnectView):
+    adapter_class = GoogleOAuth2Adapter
+
+
+class LinkedInLogin(SocialLoginView):
+    adapter_class = LinkedInOAuth2Adapter
+
+
+class LinkedInConnect(SocialConnectView):
+    adapter_class = LinkedInOAuth2Adapter
 
 
 class RegisterView(APIView):

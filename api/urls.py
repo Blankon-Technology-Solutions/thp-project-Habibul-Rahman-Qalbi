@@ -1,4 +1,11 @@
-from api.views import EmailTokenObtainPairView, RegisterView, TodoViewSet, UserViewSet
+from api.views import (
+    EmailTokenObtainPairView,
+    RegisterView,
+    TodoViewSet,
+    UserViewSet,
+    GoogleLogin,
+    GoogleConnect,
+)
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -12,6 +19,8 @@ router.register(r"todo", TodoViewSet, basename="todo")
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="token_obtain_pair"),
+    path("google/login/", GoogleLogin.as_view(), name="google_login"),
+    path("google/connect/", GoogleConnect.as_view(), name="google_connect"),
     path("token/obtain/", EmailTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
