@@ -1,14 +1,21 @@
 version: "3.9"
 
 services:
+  redis:
+    restart: unless-stopped
+    image: redis:7.2.4-alpine
+    expose:
+      - 6379
+
   backend:
     build: .
+    image: thp-project-habi:django
     restart: unless-stopped
     working_dir: /code
     volumes:
       - .:/code
     environment:
-      DJANGO_SETTINGS_MODULE: backend.settings
+      DJANGO_SETTINGS_MODULE: backend.settings.docker
     ports:
       - 8000:8000
     expose:
@@ -18,6 +25,25 @@ services:
       - /bin/bash
       - -c
       - |
-        python manage.py collectstatic --no-input --settings=backend.settings.minio
-        python manage.py migrate --settings=backend.settings.minio
+        python manage.py collectstatic --no-input --settings=backend.settings.docker
+        python manage.py migrate --settings=backend.settings.docker
         python manage.py runserver 0.0.0.0:8000
+
+  ws_server:
+    image: thp-project-habi:django
+    restart: unless-stopped
+    working_dir: /code
+    volumes:
+      - .:/code
+    environment:
+      DJANGO_SETTINGS_MODULE: backend.settings.docker
+    ports:
+      - 8888:8888
+    expose:
+      - 8888
+
+    command:
+      - /bin/bash
+      - -c
+      - |
+        python ws_server.py

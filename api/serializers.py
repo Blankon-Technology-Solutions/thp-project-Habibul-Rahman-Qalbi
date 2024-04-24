@@ -77,6 +77,28 @@ class RegisterSerializer(ModelSerializer):
 
 
 class TodoSerializer(ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = UserTodo
         fields = "__all__"
+
+    # Make sure to only create user's own todo
+    def create(self, validated_data):
+        user = None
+        request = self.context.get("request")
+        if request and hasattr(request, "user"):
+            user = request.user
+
+        validated_data["user"] = user
+        return super().create(validated_data)
+
+    # Make sure to only update user's own todo
+    def update(self, instance, validated_data):
+        user = None
+        request = self.context.get("request")
+        if request and hasattr(request, "user"):
+            user = request.user
+
+        validated_data["user"] = user
+        return super().update(instance, validated_data)
