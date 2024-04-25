@@ -2,7 +2,7 @@
   "meta": {
     "format": 2,
     "version": "7.5.0",
-    "timestamp": "2024-04-25T01:55:58.389847",
+    "timestamp": "2024-04-25T15:11:29.482922",
     "branch_coverage": false,
     "show_contexts": false
   },
@@ -91,25 +91,27 @@
     "api\\serializers.py": {
       "executed_lines": [
         1, 2, 3, 4, 5, 11, 12, 17, 18, 21, 22, 23, 24, 27, 28, 33, 39, 45, 46,
-        47, 55, 64, 65, 66, 68, 70, 79, 80, 82, 83, 84, 87, 88, 89, 92, 95, 96,
-        97, 100
+        47, 54, 62, 63, 64, 66, 68, 76, 77, 79, 80, 81, 84, 85, 86, 87, 88, 89,
+        92, 93, 94, 95, 96, 97
       ],
       "summary": {
-        "covered_lines": 39,
+        "covered_lines": 43,
         "num_statements": 44,
-        "percent_covered": 88.63636363636364,
-        "percent_covered_display": "89",
-        "missing_lines": 5,
+        "percent_covered": 97.72727272727273,
+        "percent_covered_display": "98",
+        "missing_lines": 1,
         "excluded_lines": 0
       },
-      "missing_lines": [71, 90, 91, 98, 99],
+      "missing_lines": [69],
       "excluded_lines": []
     },
     "api\\signals.py": {
-      "executed_lines": [1, 3, 4, 5, 7, 10, 11, 12, 19, 20, 21],
+      "executed_lines": [
+        1, 3, 4, 5, 6, 8, 11, 12, 13, 16, 23, 24, 25, 28, 29, 30, 37, 38, 39
+      ],
       "summary": {
-        "covered_lines": 11,
-        "num_statements": 11,
+        "covered_lines": 19,
+        "num_statements": 19,
         "percent_covered": 100.0,
         "percent_covered_display": "100",
         "missing_lines": 0,
@@ -129,6 +131,23 @@
         "excluded_lines": 0
       },
       "missing_lines": [],
+      "excluded_lines": []
+    },
+    "api\\tests\\test_endpoints.py": {
+      "executed_lines": [
+        1, 2, 3, 4, 5, 7, 10, 11, 12, 15, 16, 18, 19, 20, 25, 26, 28, 29, 30,
+        31, 32, 34, 35, 36, 37, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 51, 52,
+        53, 54, 55, 57, 58, 59, 60, 62, 63, 64, 65
+      ],
+      "summary": {
+        "covered_lines": 44,
+        "num_statements": 47,
+        "percent_covered": 93.61702127659575,
+        "percent_covered_display": "94",
+        "missing_lines": 3,
+        "excluded_lines": 0
+      },
+      "missing_lines": [50, 56, 61],
       "excluded_lines": []
     },
     "api\\tests\\test_models.py": {
@@ -153,19 +172,34 @@
       "executed_lines": [
         1, 2, 4, 5, 8, 9, 13, 14, 15, 16, 17, 19, 23, 26, 27, 29, 33, 36, 37,
         38, 39, 40, 42, 46, 49, 50, 51, 52, 55, 56, 57, 63, 64, 66, 67, 73, 74,
-        75, 77, 78, 79, 85, 86, 87, 90, 91, 95, 96, 97, 98, 101, 105, 108, 109,
-        110, 112, 116, 119, 120, 121, 122, 123, 124, 126, 130, 133, 134, 135,
-        136, 137
+        75, 77, 78, 79, 85, 86, 87, 90, 105, 109, 112, 113, 114, 116, 120, 123,
+        124, 125, 126, 127, 128, 130, 134, 137, 138, 139, 140, 141
       ],
       "summary": {
-        "covered_lines": 70,
-        "num_statements": 71,
-        "percent_covered": 98.59154929577464,
-        "percent_covered_display": "99",
-        "missing_lines": 1,
+        "covered_lines": 65,
+        "num_statements": 65,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
         "excluded_lines": 0
       },
-      "missing_lines": [99],
+      "missing_lines": [],
+      "excluded_lines": []
+    },
+    "api\\tests\\test_signals.py": {
+      "executed_lines": [
+        1, 2, 3, 4, 7, 8, 9, 13, 14, 19, 22, 23, 26, 28, 29, 30, 31, 34, 35, 38,
+        39, 42, 44, 45, 46, 47, 49, 50, 55, 56, 59, 62, 63, 66, 68, 69, 70, 71
+      ],
+      "summary": {
+        "covered_lines": 38,
+        "num_statements": 38,
+        "percent_covered": 100.0,
+        "percent_covered_display": "100",
+        "missing_lines": 0,
+        "excluded_lines": 0
+      },
+      "missing_lines": [],
       "excluded_lines": []
     },
     "api\\tests\\test_urls.py": {
@@ -228,19 +262,19 @@
       "excluded_lines": []
     },
     "backend\\permissions.py": {
-      "executed_lines": [1, 2, 5, 6, 14, 15, 23, 24, 31],
+      "executed_lines": [
+        1, 2, 5, 6, 7, 8, 9, 10, 14, 15, 16, 17, 18, 19, 23, 24, 25, 26, 27, 28,
+        31
+      ],
       "summary": {
-        "covered_lines": 9,
+        "covered_lines": 21,
         "num_statements": 29,
-        "percent_covered": 31.03448275862069,
-        "percent_covered_display": "31",
-        "missing_lines": 20,
+        "percent_covered": 72.41379310344827,
+        "percent_covered_display": "72",
+        "missing_lines": 8,
         "excluded_lines": 0
       },
-      "missing_lines": [
-        7, 8, 9, 10, 11, 16, 17, 18, 19, 20, 25, 26, 27, 28, 29, 32, 33, 34, 35,
-        36
-      ],
+      "missing_lines": [11, 20, 29, 32, 33, 34, 35, 36],
       "excluded_lines": []
     },
     "backend\\settings\\__init__.py": {
@@ -301,11 +335,11 @@
     }
   },
   "totals": {
-    "covered_lines": 395,
-    "num_statements": 431,
-    "percent_covered": 91.64733178654292,
-    "percent_covered_display": "92",
-    "missing_lines": 36,
+    "covered_lines": 496,
+    "num_statements": 518,
+    "percent_covered": 95.75289575289575,
+    "percent_covered_display": "96",
+    "missing_lines": 22,
     "excluded_lines": 0
   }
 }
