@@ -45,7 +45,6 @@ class RegisterSerializer(ModelSerializer):
     class Meta:
         model = CustomUser
         fields = (
-            "username",
             "first_name",
             "last_name",
             "password",
@@ -53,7 +52,6 @@ class RegisterSerializer(ModelSerializer):
             "email",
         )
         extra_kwargs = {
-            "username": {"help_text": _("Insert username for this account")},
             "first_name": {
                 "allow_blank": True,
                 "help_text": _("Insert user first name"),
@@ -69,7 +67,6 @@ class RegisterSerializer(ModelSerializer):
 
     def create(self, validated_data):
         return CustomUser.objects.create_user(
-            username=validated_data["username"],
             email=validated_data["email"],
             password=validated_data["password"],
             is_active=False,
